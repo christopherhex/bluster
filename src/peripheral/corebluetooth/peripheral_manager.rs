@@ -200,6 +200,8 @@ impl PeripheralManager {
                 .peripheral_manager_delegate
                 .get_ivar::<*mut Object>(PERIPHERAL_MANAGER_IVAR);
 
+            println!("Add Service");
+            println!("{:?}", service);
             let _: Result<(), ()> = msg_send![peripheral_manager, addService: service];
         }
     }

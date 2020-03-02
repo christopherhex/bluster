@@ -12,7 +12,7 @@ impl Flags for CharacteristicProperties {
         let mut flags = vec![];
         if let Some(ref read) = self.read {
             let read_flag = match read.0 {
-                characteristic::Secure::Secure(_) => "secure-read",
+                characteristic::Secure::Secure(_) => "read",
                 characteristic::Secure::Insecure(_) => "read",
             };
             flags.push(read_flag);
@@ -21,7 +21,7 @@ impl Flags for CharacteristicProperties {
         if let Some(ref write) = self.write {
             let write_flag = match write {
                 characteristic::Write::WithResponse(secure) => match secure {
-                    characteristic::Secure::Secure(_) => "secure-write",
+                    characteristic::Secure::Secure(_) => "write",
                     characteristic::Secure::Insecure(_) => "write",
                 },
                 characteristic::Write::WithoutResponse(_) => "write-without-response",
@@ -46,7 +46,7 @@ impl Flags for DescriptorProperties {
         let mut flags = vec![];
         if let Some(ref read) = self.read {
             let read_flag = match read.0 {
-                descriptor::Secure::Secure(_) => "secure-read",
+                descriptor::Secure::Secure(_) => "read",
                 descriptor::Secure::Insecure(_) => "read",
             };
             flags.push(read_flag);
@@ -54,7 +54,7 @@ impl Flags for DescriptorProperties {
 
         if let Some(ref write) = self.write {
             let write_flag = match write.0 {
-                descriptor::Secure::Secure(_) => "secure-write",
+                descriptor::Secure::Secure(_) => "write",
                 descriptor::Secure::Insecure(_) => "write",
             };
             flags.push(write_flag);
